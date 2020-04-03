@@ -2,9 +2,9 @@
 <p>Admissions: $<%= @park.price %>.00</p>
 <h2>Rides:<h2>
   <ol>
-    <% @park.rides.each do |ride| %>
+    <% @rides.each do |ride| %>
       <li><%= ride.name %></li>
     <% end %>
   </ol>
   <%# move this into the model %>
-<p> Average Thrill Rating of Rides: <%= @park.rides.average(:thrill_rating) %>/10</p>
+<p> Average Thrill Rating of Rides: <%= @park.rides.average(:thrill_rating).round(1) %>/10</p>
