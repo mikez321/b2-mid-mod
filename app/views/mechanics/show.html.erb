@@ -3,6 +3,8 @@
 <<section>
   <p>Current rides they're working on:</p>
   <ul>
-    
+    <% @mechanic.current_rides.each do |ride| %>
+      <p><%= ride.name %></p>
+    <% end %>
   </ul>
 </section>
