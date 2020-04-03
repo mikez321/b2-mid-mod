@@ -9,6 +9,5 @@ RSpec.describe "when I visit a parks show page I see the name and price of admis
 
     expect(page).to have_content("Hershey Park")
     expect(page).to have_content("Admissions: $50.00")
-
   end
 end
