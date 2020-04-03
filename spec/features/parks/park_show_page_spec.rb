@@ -5,9 +5,17 @@ RSpec.describe "when I visit a parks show page I see the name and price of admis
 
     park_1 = Park.create!(name: "Hershey Park", price: 50)
 
+    ride_1 = park_1.rides.create!(name: "Lightning Racer", thrill_rating: 8)
+    ride_2 = park_1.rides.create!(name: "Storm Runner", thrill_rating: 10)
+
     visit "/parks/#{park_1.id}"
 
     expect(page).to have_content("Hershey Park")
     expect(page).to have_content("Admissions: $50.00")
+
+    expect(page).to have_content("Lightning Racer")
+    expect(page).to have_content("Storm Runner")
+
+    expect(page).to have_content("Average Thrill Rating of Rides: 9.0/10")
   end
 end
