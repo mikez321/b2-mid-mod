@@ -9,3 +9,9 @@ Mechanic.destroy_all
 
 mechanic_1 = Mechanic.create!(name: "Sam Mills", experience: 10)
 mechanic_2 = Mechanic.create!(name: "Kara Smith", experience: 11)
+
+park_1 = Park.create!(name: "Hershey Park", price: 50)
+
+ride_1 = park_1.rides.create!(name: "Lightning Racer", thrill_rating: 7)
+ride_2 = park_1.rides.create!(name: "Storm Runner", thrill_rating: 9)
+ride_3 = park_1.rides.create!(name: "The Great Bear", thrill_rating: 9)
