@@ -20,7 +20,32 @@ RSpec.describe "when I visit a mechanics show page", type: :feature do
 
     visit "mechanics/#{mechanic_2.id}"
 
-    expect(page).to have_content("Lightning Racer, ID: #{ride_4.id}")
+    within ".mechanic-info" do
+      expect(page).to have_content("The Frog Hopper")
+      expect(page).to have_content("Farenheit")
+      expect(page).to have_content("The Kiss Raise")
+      expect(page).to_not have_content("Lightning Racer")
+    end
+
+    within ".available-rides" do
+      expect(page).to have_content("Lightning Racer")
+    end
+
+    expect(page).to have_content("Add a ride to workload:")
+
+    fill_in "ride_id", with: "#{ride_4.id}"
+
+    click_button "Add Ride"
+
+    expect(current_path).to eq("/mechanics/#{mechanic_2.id}")
+
+    within ".mechanic-info" do
+      expect(page).to have_content("The Frog Hopper")
+      expect(page).to have_content("Farenheit")
+      expect(page).to have_content("The Kiss Raise")
+      expect(page).to have_content("Lightning Racer")
+    end
+
     end
   end
 end
